@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 # Raspberry Pi のカメラで撮影を行い，サーバーにアップロードします
 
