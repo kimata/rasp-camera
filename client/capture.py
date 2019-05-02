@@ -14,7 +14,7 @@ IMAGE_NAME_FORMAT = 'camera-%Y%m%d_%H%M.jpg'
 
 SSH_HOST = '192.168.2.20'
 SSH_USER = 'guest'
-SSH_KEY  = 'guest.id_rsa'
+SSH_KEY  = '/home/pi/.ssh/guest.id_rsa'
 
 def upload(from_file_path, to_file_path):
     with paramiko.SSHClient() as ssh:
