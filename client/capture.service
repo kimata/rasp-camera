@@ -1,0 +1,14 @@
+z[Unit]
+Description=Capture Camera Image Service
+
+[Service]
+ExecStart=/home/pi/rasp-camera/client/capture.py
+Nice=-10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=capture
+WorkingDirectory=/home/pi/
+
+[Install]
+WantedBy=network.target
+
