@@ -1,4 +1,4 @@
-z[Unit]
+[Unit]
 Description=Capture Camera Image Service
 
 [Service]
