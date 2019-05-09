@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-pkg_list=(python3-paramiko python3-picamera)
+pkg_list=(python3-picamera)
 
 echo "Start setting..."
 
