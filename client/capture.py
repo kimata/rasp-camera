@@ -14,6 +14,9 @@ import subprocess
 # print('{} Loading paramiko...'.format(datetime.now()), flush=True)
 # import paramiko
 
+print('{} Loading GPIO...'.format(datetime.now()), flush=True)
+import RPi.GPIO as GPIO
+
 print('{} Loading PiCamera...'.format(datetime.now()), flush=True)
 from picamera import PiCamera
 
@@ -26,6 +29,8 @@ SSH_KEY  = '/home/pi/.ssh/guest.id_rsa'
 
 SSH_CMD  = 'ssh -i {key} -o IdentitiesOnly=yes -o StrictHostKeyChecking=no {user}@{host}'
 SCP_CMD  = 'scp -i {key} -o IdentitiesOnly=yes -o StrictHostKeyChecking=no -q {from_file_path} {user}@{host}:{to_file_path}'
+
+GPIO_DONE= 23
 
 # NOTE: paramiko は重い(Raspberry Pi Zero W だと import に 10秒近くかかる)ので使わない
 # def upload(from_file_path):
@@ -82,9 +87,15 @@ def capture():
 
     return image_path
 
+def notify_dine():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(GPIO_DONE, GPIO.OUT)
+    GPIO.output(GPIO_DONE, GPIO.HIGH)
+
 
 print('{} START capture...'.format(datetime.now()), flush=True)
 image_path = capture()
 print('{} START upload...'.format(datetime.now()), flush=True)
 upload(image_path)
 print('{} FINISH.'.format(datetime.now()), flush=True)
+notify_dine()
