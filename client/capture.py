@@ -82,6 +82,9 @@ def capture():
     camera = PiCamera()
     camera.resolution = (3280, 2464)
     camera.iso = 100
+    # 180度回転
+    camera.hflip = True
+    camera.vflip = True
     
     camera.capture(image_path, quality=100)
 
